@@ -15,6 +15,8 @@ const Contact = () => {
     message: ''
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'https://e-commerce-ir67.onrender.com';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -22,7 +24,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/contact', 
+        `${API_URL}/api/contact`,
         formData,
         {
           headers: {
