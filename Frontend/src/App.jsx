@@ -8,7 +8,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Productspage from "./pages/Productspage";
 import styled, { keyframes } from "styled-components";
-import ClientStories from "./pages/Clientstories";
+import ClientStories from "./pages/ClientStories";
 // Animations
 const pulse = keyframes`
   0%, 100% { transform: scale(1); opacity: 1; }
