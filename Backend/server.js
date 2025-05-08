@@ -44,6 +44,18 @@ const productSampleSchema = new mongoose.Schema({
 
 const ProductSample = mongoose.model('ProductSample', productSampleSchema);
 
+const customizationSchema = new mongoose.Schema({
+  productId: { type: Number, required: true },
+  productName: { type: String, required: true },
+  email: { type: String, required: true },
+  customText: String,
+  colorPreference: String,
+  additionalNotes: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+const Customization = mongoose.model('Customization', customizationSchema);
+
 // Email Transporter Configuration
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -184,6 +196,71 @@ app.post('/api/contact', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'An error occurred while processing your request'
+    });
+  }
+});
+
+// Customization Endpoint
+app.post('/api/customizations', async (req, res) => {
+  try {
+    const { productId, email, customText, colorPreference, additionalNotes } = req.body;
+    
+    if (!productId || !email) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'Product ID and email are required' 
+      });
+    }
+
+    const product = products[productId];
+    if (!product) {
+      return res.status(404).json({ 
+        success: false,
+        message: 'Product not found' 
+      });
+    }
+
+    const customization = new Customization({
+      productId,
+      productName: product.name,
+      email,
+      customText,
+      colorPreference,
+      additionalNotes
+    });
+    await customization.save();
+
+    const mailOptions = {
+      from: `"Cartonize Team" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: 'Your Cartonize Customization Request Confirmation',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Thank you for your customization request!</h2>
+          <p>We've received your customization for <strong>${product.name}</strong>.</p>
+          <h3 style="color: #333;">Customization Details:</h3>
+          <p style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+            <strong>Custom Text:</strong> ${customText || 'Not specified'}<br>
+            <strong>Color Preference:</strong> ${colorPreference || 'Not specified'}<br>
+            <strong>Additional Notes:</strong> ${additionalNotes || 'None'}
+          </p>
+          <p>Our team will review your request and contact you within 1-2 business days.</p>
+          <p>Best regards,<br>The Cartonize Team</p>
+        </div>
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(201).json({ 
+      success: true,
+      message: 'Customization request submitted successfully. Confirmation email sent.' 
+    });
+  } catch (error) {
+    console.error('Error submitting customization request:', error);
+    res.status(500).json({ 
+      success: false,
+      message: 'Failed to submit customization request'
     });
   }
 });

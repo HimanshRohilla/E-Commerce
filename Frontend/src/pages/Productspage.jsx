@@ -16,6 +16,14 @@ const Productspage = () => {
     shippingAddress: ''
   });
 
+  // Customization form state
+  const [customizationForm, setCustomizationForm] = useState({
+    email: '',
+    customText: '',
+    colorPreference: '',
+    additionalNotes: ''
+  });
+
   // Product categories
   const categories = [
     { id: 'eco-friendly', name: 'Eco-Friendly Boxes' },
@@ -124,6 +132,8 @@ const Productspage = () => {
   const openCustomizeModal = (product) => {
     setSelectedProduct(product);
     setShowCustomizeModal(true);
+    setSuccessMessage('');
+    setErrorMessage('');
   };
 
   // Close all modals
@@ -131,12 +141,22 @@ const Productspage = () => {
     setShowSampleModal(false);
     setShowCustomizeModal(false);
     setSampleForm({ email: '', shippingAddress: '' });
+    setCustomizationForm({
+      email: '',
+      customText: '',
+      colorPreference: '',
+      additionalNotes: ''
+    });
   };
 
   // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSampleForm(prev => ({ ...prev, [name]: value }));
+    if (showSampleModal) {
+      setSampleForm(prev => ({ ...prev, [name]: value }));
+    } else if (showCustomizeModal) {
+      setCustomizationForm(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   // Handle sample form submission
@@ -170,10 +190,37 @@ const Productspage = () => {
     }
   };
 
-  const handleCustomizeSubmit = (e) => {
+  // Handle customization form submission
+  const handleCustomizeSubmit = async (e) => {
     e.preventDefault();
-    alert(`Customization submitted for ${selectedProduct.name}`);
-    closeModals();
+    
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        'https://e-commerce-ir67.onrender.com/api/customizations',
+        {
+          productId: selectedProduct.id,
+          email: customizationForm.email,
+          customText: customizationForm.customText,
+          colorPreference: customizationForm.colorPreference,
+          additionalNotes: customizationForm.additionalNotes
+        },
+        {
+          headers: {
+            'x-auth-token': token
+          }
+        }
+      );
+      
+      setSuccessMessage('Customization request submitted! You will receive a confirmation email shortly.');
+      
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        closeModals();
+      }, 3000);
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || 'Failed to submit request. Please try again.');
+    }
   };
 
   return (
@@ -335,23 +382,65 @@ const Productspage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-6 max-w-md w-full">
             <h3 className="text-xl font-bold mb-4">Customize: {selectedProduct?.name}</h3>
+            {successMessage && (
+              <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg">
+                {successMessage}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+                {errorMessage}
+              </div>
+            )}
             <form onSubmit={handleCustomizeSubmit}>
+              <div className="mb-4">
+                <label className="block text-gray-700 mb-2">Your Email</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={customizationForm.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border rounded-lg" 
+                  required 
+                  placeholder="example@email.com"
+                />
+              </div>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Custom Text</label>
                 <input 
                   type="text" 
+                  name="customText"
+                  value={customizationForm.customText}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-2 border rounded-lg" 
                   placeholder="Your text here"
                 />
               </div>
-              <div className="mb-6">
+              <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Color Preference</label>
-                <select className="w-full px-4 py-2 border rounded-lg">
-                  <option>Red</option>
-                  <option>Blue</option>
-                  <option>Green</option>
-                  <option>Custom</option>
+                <select 
+                  name="colorPreference"
+                  value={customizationForm.colorPreference}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border rounded-lg"
+                >
+                  <option value="">Select a color</option>
+                  <option value="Red">Red</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Green">Green</option>
+                  <option value="Custom">Custom</option>
                 </select>
+              </div>
+              <div className="mb-6">
+                <label className="block text-gray-700 mb-2">Additional Notes</label>
+                <textarea 
+                  name="additionalNotes"
+                  value={customizationForm.additionalNotes}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border rounded-lg" 
+                  rows="3" 
+                  placeholder="Any special requirements..."
+                ></textarea>
               </div>
               <div className="flex justify-end space-x-3">
                 <button 
