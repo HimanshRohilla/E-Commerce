@@ -146,7 +146,7 @@ const Productspage = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `${VITE_API_URL}/api/productsamples`,
+        'https://e-commerce-ir67.onrender.com/api/productsamples',
         {
           productId: selectedProduct.id,
           email: sampleForm.email,
