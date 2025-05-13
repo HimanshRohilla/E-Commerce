@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 const slides = [
   {
-    image: 'https://images.pexels.com/photos/6169641/pexels-photo-6169641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: './images/SlideShow1.jpg',
   },
   {
-    image: 'https://images.pexels.com/photos/6170396/pexels-photo-6170396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: './images/SlideShow2.jpg',
   },
   {
-    image: 'https://images.pexels.com/photos/6169054/pexels-photo-6169054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: './images/SlideShow3.jpg',
   }
 ];
 

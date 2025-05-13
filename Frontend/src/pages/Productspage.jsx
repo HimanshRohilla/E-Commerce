@@ -36,20 +36,20 @@ const Productspage = () => {
   // Product images
   const productImages = {
     'eco-friendly': [
-      'https://images.pexels.com/photos/6169864/pexels-photo-6169864.jpeg',
-      'https://images.pexels.com/photos/8371705/pexels-photo-8371705.jpeg'
+      './images/EcoFriendly3.jpg',
+      './images/EcoFriendly2.jpg'
     ],
     'custom-printed': [
-      'https://images.pexels.com/photos/31447458/pexels-photo-31447458/free-photo-of-laverne-branding-box-with-leopard-logo.jpeg',
-      'https://images.pexels.com/photos/19963222/pexels-photo-19963222/free-photo-of-gift-box-tied-with-a-silver-ribbon-prepared-by-present-simple.jpeg'
+      './images/CustomPrinted2.jpg',
+      './images/CustomPrinted3.jpg'
     ],
     'shipping': [
-      'https://images.pexels.com/photos/6169019/pexels-photo-6169019.jpeg',
-      'https://images.pexels.com/photos/6169014/pexels-photo-6169014.jpeg'
+      './images/ShippingBox.jpg',
+      './images/ShippingBox1.jpg'
     ],
     'luxury': [
-      'https://images.pexels.com/photos/6204570/pexels-photo-6204570.jpeg',
-      'https://images.pexels.com/photos/6568213/pexels-photo-6568213.jpeg'
+      './images/LuxuryGift1.jpg',
+      './images/LuxuryGift2.jpg'
     ]
   };
 

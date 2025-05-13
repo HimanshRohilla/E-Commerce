@@ -48,7 +48,7 @@ const About = () => {
           </div>
           <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
             <img
-              src="https://images.pexels.com/photos/31788399/pexels-photo-31788399/free-photo-of-modern-printing-facility-interior-with-workers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src="./images/About1.jpg"
               alt="Founder working in early workshop"
               className="w-full h-full object-cover"
             />
@@ -73,7 +73,7 @@ const About = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-blue-50 flex items-center justify-center p-6">
                 <img
-                  src="https://images.pexels.com/photos/18946636/pexels-photo-18946636/free-photo-of-nike-air-max-1-97-sean-wotherspoon-shoe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="./images/About2.jpg"
                   alt="GreenSneakers product packaging"
                   className="h-full object-contain"
                 />
@@ -96,7 +96,7 @@ const About = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-pink-50 flex items-center justify-center p-6">
                 <img
-                  src="https://images.pexels.com/photos/31110094/pexels-photo-31110094/free-photo-of-soap-and-glory-vitamin-c-gel-cream-product-display.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="./images/About3.jpg"
                   alt="Bloom Cosmetics packaging"
                   className="h-full object-contain"
                 />
@@ -119,7 +119,7 @@ const About = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-yellow-50 flex items-center justify-center p-6">
                 <img
-                  src="https://images.pexels.com/photos/7502802/pexels-photo-7502802.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="./images/About4.jpg"
                   alt="BeanThere Coffee packaging"
                   className="h-full object-contain"
                 />
@@ -262,7 +262,7 @@ const About = () => {
 
           <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
             <img
-              src="https://images.pexels.com/photos/4481534/pexels-photo-4481534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src="./images/About5.jpg"
               alt="Our manufacturing facility"
               className="w-full h-full object-cover"
             />

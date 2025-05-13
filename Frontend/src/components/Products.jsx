@@ -9,25 +9,25 @@ const Products = () => {
       id: 1,
       name: "Eco-Friendly Cartons",
       description: "Sustainable packaging made from recycled materials",
-      image: "https://images.pexels.com/photos/6169028/pexels-photo-6169028.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "./images/EcoFriendly.jpg",
     },
     {
       id: 2,
       name: "Custom Printed Boxes",
       description: "Fully customizable designs for your brand",
-      image: "https://images.pexels.com/photos/6181851/pexels-photo-6181851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "./images/CustomPrinted.jpg",
     },
     {
       id: 3,
       name: "Shipping Boxes",
       description: "Durable protection for your shipments",
-      image: "https://images.pexels.com/photos/4440841/pexels-photo-4440841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "./images/Shipping.jpg",
     },
     {
       id: 4,
       name: "Luxury Gift Boxes",
       description: "Premium packaging for high-end products",
-      image: "https://images.pexels.com/photos/1050256/pexels-photo-1050256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "./images/LuxryGift.jpg",
     },
   ];
 
