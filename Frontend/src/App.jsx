@@ -30,6 +30,11 @@ const fadeIn = keyframes`
   to { opacity: 1; }
 `;
 
+const reveal = keyframes`
+  from { clip-path: circle(0% at 50% 50%); }
+  to { clip-path: circle(150% at 50% 50%); }
+`;
+
 // Styled components
 const LoaderContainer = styled.div`
   position: fixed;
@@ -79,8 +84,24 @@ const SubText = styled.p`
   animation: ${fadeIn} 1s ease-in;
 `;
 
+const ContentWrapper = styled.div`
+  animation: ${reveal} 1s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+  &.loaded {
+    opacity: 1;
+  }
+`;
+
 // Box animation component
-const BoxLoader = () => {
+const BoxLoader = ({ onComplete }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onComplete();
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
     <LoaderContainer>
       <BoxGrid>
@@ -96,46 +117,46 @@ const BoxLoader = () => {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const handleLoadingComplete = () => {
+    setShowContent(true);
+    setTimeout(() => setIsLoading(false), 1000); // Wait for the reveal animation to complete
+  };
 
   return (
     <div className="App">
       {isLoading ? (
-        <BoxLoader />
+        <BoxLoader onComplete={handleLoadingComplete} />
       ) : (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/client-stories" element={<ClientStories />} />
-            <Route path="/client-stories/1" element={<ClientStories />} />
-            <Route path="/client-stories/2" element={<ClientStories />} />
-            <Route path="/client-stories/3" element={<ClientStories />} />
-            <Route path="/client-stories/4" element={<ClientStories />} />
-            <Route path="/client-stories/5" element={<ClientStories />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/productspage" element={<Productspage />} />
-            <Route path="/products/:productId" element={<Productspage />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/sustainability" element={<Sustainability />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/packaging-guide" element={<PackagingGuide />} />
-            <Route path="/design-tips" element={<DesignTips />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/shipping-policy" element={<ShippingPolicy />} />
-            <Route path="/returns" element={<Returns />} />
-          </Routes>
-          <Footer />
-        </Router>
+        <ContentWrapper className={showContent ? "loaded" : ""}>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/client-stories" element={<ClientStories />} />
+              <Route path="/client-stories/1" element={<ClientStories />} />
+              <Route path="/client-stories/2" element={<ClientStories />} />
+              <Route path="/client-stories/3" element={<ClientStories />} />
+              <Route path="/client-stories/4" element={<ClientStories />} />
+              <Route path="/client-stories/5" element={<ClientStories />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/productspage" element={<Productspage />} />
+              <Route path="/products/:productId" element={<Productspage />} />
+              <Route path="/process" element={<Process />} />
+              <Route path="/sustainability" element={<Sustainability />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/packaging-guide" element={<PackagingGuide />} />
+              <Route path="/design-tips" element={<DesignTips />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/shipping-policy" element={<ShippingPolicy />} />
+              <Route path="/returns" element={<Returns />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </ContentWrapper>
       )}
     </div>
   );
