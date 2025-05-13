@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import FadeInOnScroll from '../components/FadeInOnScroll';
 
 const Productspage = () => {
   // State for active category
@@ -226,9 +227,12 @@ const Productspage = () => {
   return (
     <div className="py-12 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <FadeInOnScroll>
         <h1 className="text-3xl font-bold text-center mb-8">Our Packaging Solutions</h1>
+      </FadeInOnScroll>
         
         {/* Category buttons */}
+        <FadeInOnScroll>
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map(category => (
             <button
@@ -244,8 +248,10 @@ const Productspage = () => {
             </button>
           ))}
         </div>
+        </FadeInOnScroll>
 
         {/* Product grid */}
+        <FadeInOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products[activeCategory].map((product, index) => (
             <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
@@ -300,8 +306,10 @@ const Productspage = () => {
             </div>
           ))}
         </div>
+        </FadeInOnScroll>
 
         {/* Category description */}
+        <FadeInOnScroll>
         <div className="mt-16 bg-white p-8 rounded-xl shadow-sm">
           <h2 className="text-2xl font-bold mb-4">About Our {categories.find(c => c.id === activeCategory).name}</h2>
           <p className="text-gray-600">
@@ -315,6 +323,7 @@ const Productspage = () => {
               'Elevate your unboxing experience with our premium luxury packaging designed to make a lasting impression.'}
           </p>
         </div>
+      </FadeInOnScroll>
       </div>
 
       {/* Sample Request Modal */}
@@ -378,6 +387,7 @@ const Productspage = () => {
       )}
 
       {/* Customize Modal */}
+      <FadeInOnScroll>
       {showCustomizeModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-6 max-w-md w-full">
@@ -461,6 +471,7 @@ const Productspage = () => {
           </div>
         </div>
       )}
+      </FadeInOnScroll>
     </div>
   );
 };

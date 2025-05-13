@@ -2,13 +2,23 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Productspage from "./pages/Productspage";
-import styled, { keyframes } from "styled-components";
 import ClientStories from "./pages/ClientStories";
+import Process from "./pages/Process";
+import Sustainability from "./pages/Sustainability";
+import Faq from "./pages/Faq";
+import PackagingGuide from "./pages/PackagingGuide";
+import DesignTips from "./pages/DesignTips";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import ShippingPolicy from "./pages/ShippingPolicy";
+import Returns from "./pages/Returns";
+import styled, { keyframes } from "styled-components";
+
 // Animations
 const pulse = keyframes`
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -43,13 +53,13 @@ const BoxGrid = styled.div`
 `;
 
 const Box = styled.div.attrs((props) => ({
-  delay: props.delay || 0,
+  delay: props.delay || "0s",
 }))`
   width: 30px;
   height: 30px;
   background: #fff;
   animation: ${pulse} 1.5s ease-in-out infinite;
-  animation-delay: ${(props) => props.delay}s;
+  animation-delay: ${(props) => props.delay};
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 `;
 
@@ -75,7 +85,7 @@ const BoxLoader = () => {
     <LoaderContainer>
       <BoxGrid>
         {[...Array(9)].map((_, i) => (
-          <Box key={i} delay={i * 0.1} />
+          <Box key={`box-${i}`} delay={`${i * 0.1}s`} />
         ))}
       </BoxGrid>
       <LoadingText>Cartonize</LoadingText>
@@ -100,25 +110,32 @@ function App() {
       {isLoading ? (
         <BoxLoader />
       ) : (
-        <>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/client-stories" element={<ClientStories />} />
-              <Route path="/client-stories/1" element={<ClientStories />} />
-              <Route path="/client-stories/2" element={<ClientStories />} />
-              <Route path="/client-stories/3" element={<ClientStories />} />
-              <Route path="/client-stories/4" element={<ClientStories />} />
-              <Route path="/client-stories/5" element={<ClientStories />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/productspage" element={<Productspage />} />
-              <Route path="/products/:productId" element={<Productspage />} />
-            </Routes>
-          </Router>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/client-stories" element={<ClientStories />} />
+            <Route path="/client-stories/1" element={<ClientStories />} />
+            <Route path="/client-stories/2" element={<ClientStories />} />
+            <Route path="/client-stories/3" element={<ClientStories />} />
+            <Route path="/client-stories/4" element={<ClientStories />} />
+            <Route path="/client-stories/5" element={<ClientStories />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/productspage" element={<Productspage />} />
+            <Route path="/products/:productId" element={<Productspage />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/packaging-guide" element={<PackagingGuide />} />
+            <Route path="/design-tips" element={<DesignTips />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/returns" element={<Returns />} />
+          </Routes>
           <Footer />
-        </>
+        </Router>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import FadeInOnScroll from "../components/FadeInOnScroll";
 
 const About = () => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ const About = () => {
     <div className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
+        <FadeInOnScroll>
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
             Our Journey in Packaging Innovation
@@ -16,8 +18,10 @@ const About = () => {
             packaging one box at a time
           </p>
         </div>
+        </FadeInOnScroll>
 
         {/* Founding Story */}
+        <FadeInOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <div>
             <h2 className="text-3xl font-semibold mb-6 text-gray-900">
@@ -55,6 +59,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        </FadeInOnScroll>
 
         {/* Our Clients Section */}
         <div className="mb-24">
@@ -64,6 +69,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* Client 1 */}
+            <FadeInOnScroll>
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-blue-50 flex items-center justify-center p-6">
                 <img
@@ -83,8 +89,10 @@ const About = () => {
                 </div>
               </div>
             </div>
+            </FadeInOnScroll>
 
             {/* Client 2 */}
+            <FadeInOnScroll>
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-pink-50 flex items-center justify-center p-6">
                 <img
@@ -104,8 +112,10 @@ const About = () => {
                 </div>
               </div>
             </div>
+            </FadeInOnScroll>
 
             {/* Client 3 */}
+            <FadeInOnScroll>
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="h-48 bg-yellow-50 flex items-center justify-center p-6">
                 <img
@@ -125,6 +135,7 @@ const About = () => {
                 </div>
               </div>
             </div>
+            </FadeInOnScroll>
           </div>
 
           <div className="text-center">
@@ -136,8 +147,10 @@ const About = () => {
             </button>
           </div>
         </div>
+        
 
         {/* Startup Program */}
+        <FadeInOnScroll>
         <div className="bg-black text-white p-12 rounded-2xl mb-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">
@@ -238,9 +251,10 @@ const About = () => {
             </div>
           </div>
         </div>
-
+        </FadeInOnScroll>
+        
         {/* Manufacturing Process */}
-        {/* Manufacturing Process */}
+        <FadeInOnScroll>
         <div className="mb-16">
           <h2 className="text-3xl font-semibold text-center mb-12 text-gray-900">
             Our Sustainable Process
@@ -278,8 +292,10 @@ const About = () => {
             </div>
           </div>
         </div>
+        </FadeInOnScroll>
 
         {/* Team CTA */}
+        <FadeInOnScroll>
         <div className="text-center">
           <h2 className="text-3xl font-semibold mb-6 text-gray-900">
             Meet the Team Behind Your Packaging
@@ -296,6 +312,7 @@ const About = () => {
             Contact Our Packaging Consultants
           </button>
         </div>
+        </FadeInOnScroll>
       </div>
     </div>
   );
