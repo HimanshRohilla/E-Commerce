@@ -49,36 +49,6 @@ const stories = [
       ],
       quote: "Cartonize understood our 'ground-to-ground' philosophy. Their packaging solution helped us differentiate in a market where most bags end up in landfills."
     },
-    {
-      id: 4,
-      title: "TinyTea: Small Company, Big Impact",
-      excerpt: "How custom packaging helped a tea startup punch above its weight",
-      image: "./images/ClientPage.jpg",
-      logo: "./images/ClientLogo3.jpg",
-      challenge: "With limited budget but premium products, TinyTea needed packaging that made them look established while keeping costs low.",
-      solution: "Our startup program provided custom-printed boxes with minimal order quantities and a modular design that scaled as their product line grew.",
-      results: [
-        "Reduced packaging costs by 30% compared to competitors",
-        "Won Best Packaging at the Global Tea Awards",
-        "Grew from local farmers' markets to national distribution in 18 months"
-      ],
-      quote: "Cartonize's startup program gave us packaging that made us look like we'd been in business for years, at a price that worked for our tiny budget."
-    },
-    {
-      id: 5,
-      title: "Paws & Reflect: Packaging That Pets Love",
-      excerpt: "Creating pet-safe packaging that stands out on crowded shelves",
-      image: "./images/About6.jpg",
-      logo: "./images/ClientLogo4.jpg",
-      challenge: "This organic pet treat company needed packaging that was durable, non-toxic, and appealed to both pets and their owners.",
-      solution: "We developed a tear-resistant box with a built-in treat dispenser flap and scratch-resistant matte finish that became part of the product experience.",
-      results: [
-        "Voted Most Innovative Packaging by Pet Business Magazine",
-        "35% increase in repeat purchases due to interactive packaging",
-        "First pet company to receive Sustainable Packaging Certification"
-      ],
-      quote: "Our customers' dogs actually get excited when they see our boxes arrive! Cartonize helped us turn packaging into part of the product experience."
-    }
 ];
 
 const StoryCard = ({ story, onClick }) => (
