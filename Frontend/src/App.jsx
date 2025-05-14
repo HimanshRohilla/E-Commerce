@@ -21,21 +21,6 @@ import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Returns from "./pages/Returns";
 
-// Keyframe animations
-const pulse = keyframes`
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(0.85); opacity: 0.6; }
-`;
-
-const fadeInText = keyframes`
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-`;
-
-const reveal = keyframes`
-  0% { clip-path: circle(0% at 50% 50%); opacity: 0; transform: scale(0.98); }
-  100% { clip-path: circle(150% at 50% 50%); opacity: 1; transform: scale(1); }
-`;
 
 // Styled components
 const LoaderContainer = styled.div`
