@@ -50,9 +50,6 @@ const LoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-  opacity: ${props => props.fadeOut ? 0 : 1};
-  visibility: ${props => props.fadeOut ? "hidden" : "visible"};
 `;
 
 const BoxGrid = styled.div`
@@ -100,22 +97,16 @@ const ContentWrapper = styled.div`
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [fadeLoader, setFadeLoader] = useState(false);
 
   useEffect(() => {
-    const fadeTimeout = setTimeout(() => setFadeLoader(true), 1800);
     const doneTimeout = setTimeout(() => setIsLoading(false), 2800);
-
-    return () => {
-      clearTimeout(fadeTimeout);
-      clearTimeout(doneTimeout);
-    };
+    return () => clearTimeout(doneTimeout);
   }, []);
 
   return (
     <div className="App">
-      {isLoading && (
-        <LoaderContainer fadeOut={fadeLoader}>
+      {isLoading ? (
+        <LoaderContainer>
           <BoxGrid>
             {[...Array(9)].map((_, i) => (
               <Box key={i} delay={`${i * 0.1}s`} />
@@ -124,9 +115,7 @@ function App() {
           <LoadingText>Cartonize</LoadingText>
           <SubText>Premium Packaging Solutions</SubText>
         </LoaderContainer>
-      )}
-
-      {!isLoading && (
+      ) : (
         <ContentWrapper>
           <Router>
             <Navbar />
