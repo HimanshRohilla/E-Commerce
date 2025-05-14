@@ -32,11 +32,6 @@ const fadeInText = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-const reveal = keyframes`
-  0% { clip-path: circle(0% at 50% 50%); opacity: 0; transform: scale(0.98); }
-  100% { clip-path: circle(150% at 50% 50%); opacity: 1; transform: scale(1); }
-`;
-
 // Styled components
 const LoaderContainer = styled.div`
   position: fixed;
@@ -66,7 +61,7 @@ const Box = styled.div.attrs(props => ({
   height: 28px;
   background: #fff;
   border-radius: 4px;
-  animation: ${pulse} 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: ${pulse} 1.0s infinite;
   animation-delay: ${props => props.delay};
 `;
 
@@ -91,10 +86,6 @@ const SubText = styled.p`
   opacity: 0;
 `;
 
-const ContentWrapper = styled.div`
-  animation: ${reveal} 1s ease both;
-`;
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -116,30 +107,28 @@ function App() {
           <SubText>Premium Packaging Solutions</SubText>
         </LoaderContainer>
       ) : (
-        <ContentWrapper>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/client-stories" element={<ClientStories />} />
-              <Route path="/client-stories/:id" element={<ClientStories />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/productspage" element={<Productspage />} />
-              <Route path="/products/:productId" element={<Productspage />} />
-              <Route path="/process" element={<Process />} />
-              <Route path="/sustainability" element={<Sustainability />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/packaging-guide" element={<PackagingGuide />} />
-              <Route path="/design-tips" element={<DesignTips />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/shipping-policy" element={<ShippingPolicy />} />
-              <Route path="/returns" element={<Returns />} />
-            </Routes>
-            <Footer />
-          </Router>
-        </ContentWrapper>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/client-stories" element={<ClientStories />} />
+            <Route path="/client-stories/:id" element={<ClientStories />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/productspage" element={<Productspage />} />
+            <Route path="/products/:productId" element={<Productspage />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/packaging-guide" element={<PackagingGuide />} />
+            <Route path="/design-tips" element={<DesignTips />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/returns" element={<Returns />} />
+          </Routes>
+          <Footer />
+        </Router>
       )}
     </div>
   );
