@@ -1,7 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+  
+  // Scroll to top handler
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Optional: adds smooth scrolling
+    });
+  };
+
   // For React Router v6 active styling
   const navLinkClass = ({ isActive }) => 
     `hover:text-white transition ${isActive ? 'text-white' : 'text-gray-400'}`;
@@ -27,17 +37,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <NavLink to="/about" className={navLinkClass}>
+                <NavLink to="/about" className={navLinkClass} onClick={handleClick}>
                   About Us
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/process" className={navLinkClass}>
+                <NavLink to="/process" className={navLinkClass} onClick={handleClick}>
                   Our Process
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/sustainability" className={navLinkClass}>
+                <NavLink to="/sustainability" className={navLinkClass} onClick={handleClick}>
                   Sustainability
                 </NavLink>
               </li>
@@ -48,17 +58,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <NavLink to="/faq" className={navLinkClass}>
+                <NavLink to="/faq" className={navLinkClass} onClick={handleClick}>
                   FAQ
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/packaging-guide" className={navLinkClass}>
+                <NavLink to="/packaging-guide" className={navLinkClass} onClick={handleClick}>
                   Packaging Guide
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/design-tips" className={navLinkClass}>
+                <NavLink to="/design-tips" className={navLinkClass} onClick={handleClick}>
                   Design Tips
                 </NavLink>
               </li>
@@ -69,23 +79,23 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <NavLink to="/privacy-policy" className={navLinkClass}>
+                <NavLink to="/privacy-policy" className={navLinkClass} onClick={handleClick}>
                   Privacy Policy
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/terms-of-service" className={navLinkClass}>
+                <NavLink to="/terms-of-service" className={navLinkClass} onClick={handleClick}>
                   Terms of Service
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shipping-policy" className={navLinkClass}>
+                <NavLink to="/shipping-policy" className={navLinkClass} onClick={handleClick}>
                   Shipping Policy
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/returns" className={navLinkClass}>
-                  Returns
+                <NavLink to="/returns" className={navLinkClass} onClick={handleClick}>
+                  Return Policy
                 </NavLink>
               </li>
             </ul>
