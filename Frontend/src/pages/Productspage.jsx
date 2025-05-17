@@ -25,10 +25,10 @@ const Productspage = () => {
   ];
 
   const productImages = {
-    'eco-friendly': ['./images/EcoFriendly3.jpg', './images/EcoFriendly2.jpg'],
-    'custom-printed': ['./images/CustomPrinted2.jpg', './images/CustomPrinted3.jpg'],
-    'shipping': ['./images/ShippingBox.jpg', './images/ShippingBox1.jpg'],
-    'luxury': ['./images/LuxuryGift1.jpg', './images/LuxuryGift2.jpg']
+    'eco-friendly': ['/images/EcoFriendly3.jpg', '/images/EcoFriendly2.jpg'],
+    'custom-printed': ['/images/CustomPrinted2.jpg', '/images/CustomPrinted3.jpg'],
+    'shipping': ['/images/ShippingBox.jpg', '/images/ShippingBox1.jpg'],
+    'luxury': ['/images/LuxuryGift1.jpg', '/images/LuxuryGift2.jpg']
   };
 
   const products = {
