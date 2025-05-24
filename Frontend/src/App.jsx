@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./index.css";
-import { Analytics } from "@vercel/analytics/next"
+import ReactGA from "react-ga4";
 
 // Pages
 import About from "./pages/About";
@@ -22,7 +22,12 @@ import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Returns from "./pages/Returns";
 
-// Keyframe animations
+// Google Analytics ID
+const GA_MEASUREMENT_ID = "G-K6Z2Y06M4Q"; // ← Replace this with your actual GA4 ID
+
+// Initialize Google Analytics once
+ReactGA.initialize(GA_MEASUREMENT_ID);
+
 const pulse = keyframes`
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(0.85); opacity: 0.6; }
@@ -33,7 +38,6 @@ const fadeInText = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-// Styled components
 const LoaderContainer = styled.div`
   position: fixed;
   top: 0;
@@ -87,6 +91,42 @@ const SubText = styled.p`
   opacity: 0;
 `;
 
+// Custom hook to track page views on route change
+function usePageTracking() {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
+}
+
+function AppContent() {
+  usePageTracking();
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/client-stories" element={<ClientStories />} />
+        <Route path="/client-stories/:id" element={<ClientStories />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/productspage" element={<Productspage />} />
+        <Route path="/products/:productId" element={<Productspage />} />
+        <Route path="/process" element={<Process />} />
+        <Route path="/sustainability" element={<Sustainability />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/packaging-guide" element={<PackagingGuide />} />
+        <Route path="/design-tips" element={<DesignTips />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/shipping-policy" element={<ShippingPolicy />} />
+        <Route path="/returns" element={<Returns />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -97,7 +137,6 @@ function App() {
 
   return (
     <div className="App">
-      <Analytics/>
       {isLoading ? (
         <LoaderContainer>
           <BoxGrid>
@@ -110,26 +149,7 @@ function App() {
         </LoaderContainer>
       ) : (
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/client-stories" element={<ClientStories />} />
-            <Route path="/client-stories/:id" element={<ClientStories />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/productspage" element={<Productspage />} />
-            <Route path="/products/:productId" element={<Productspage />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/sustainability" element={<Sustainability />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/packaging-guide" element={<PackagingGuide />} />
-            <Route path="/design-tips" element={<DesignTips />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/shipping-policy" element={<ShippingPolicy />} />
-            <Route path="/returns" element={<Returns />} />
-          </Routes>
-          <Footer />
+          <AppContent />
         </Router>
       )}
     </div>
