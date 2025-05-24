@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./index.css";
+import { Analytics } from "@vercel/analytics/next"
 
 // Pages
 import About from "./pages/About";
@@ -96,6 +97,7 @@ function App() {
 
   return (
     <div className="App">
+      <Analytics/>
       {isLoading ? (
         <LoaderContainer>
           <BoxGrid>
