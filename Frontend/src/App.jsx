@@ -21,6 +21,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Returns from "./pages/Returns";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Google Analytics ID
 const GA_MEASUREMENT_ID = "G-K6Z2Y06M4Q"; // ← Replace this with your actual GA4 ID
@@ -103,6 +104,7 @@ function AppContent() {
   usePageTracking();
   return (
     <>
+      <SpeedInsights />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
