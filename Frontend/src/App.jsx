@@ -23,7 +23,7 @@ import ShippingPolicy from "./pages/ShippingPolicy";
 import Returns from "./pages/Returns";
 
 // Google Analytics ID
-const GA_MEASUREMENT_ID = "G-K6Z2Y06M4Q"; // ← Replace this with your actual GA4 ID
+const GA_MEASUREMENT_ID = "G-K6Z2Y06M4Q"; 
 
 // Initialize Google Analytics once
 ReactGA.initialize(GA_MEASUREMENT_ID);
