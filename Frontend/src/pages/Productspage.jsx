@@ -188,8 +188,6 @@ const Productspage = () => {
         <FadeInOnScroll>
           <h1 className="text-3xl font-bold text-center mb-8">Our Packaging Solutions</h1>
         </FadeInOnScroll>
-
-        {/* Category buttons */}
         <FadeInOnScroll>
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((category) => (
@@ -207,8 +205,6 @@ const Productspage = () => {
             ))}
           </div>
         </FadeInOnScroll>
-
-        {/* Product cards */}
         <FadeInOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products[activeCategory].map((product, index) => (
@@ -258,8 +254,6 @@ const Productspage = () => {
             ))}
           </div>
         </FadeInOnScroll>
-
-        {/* Description */}
         <FadeInOnScroll>
           <div className="mt-16 bg-white p-8 rounded-xl shadow-sm">
             <h2 className="text-2xl font-bold mb-4">
@@ -269,8 +263,6 @@ const Productspage = () => {
           </div>
         </FadeInOnScroll>
       </div>
-
-      {/* Modals */}
       {(showSampleModal || showCustomizeModal) && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-6 max-w-md w-full">

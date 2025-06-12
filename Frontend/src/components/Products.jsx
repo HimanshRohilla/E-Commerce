@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const products = [
     {
@@ -32,9 +32,7 @@ const Products = () => {
   ];
 
   const handleViewDetails = (productId) => {
-    // Navigate to products page with the product ID
     navigate(`/products/${productId}`);
-    // Optional: Scroll to top after navigation
     window.scrollTo(0, 0);
   };
 

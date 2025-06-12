@@ -3,23 +3,18 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
-  
-  // Scroll to top handler
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Optional: adds smooth scrolling
+      behavior: 'smooth'
     });
   };
-
-  // For React Router v6 active styling
   const navLinkClass = ({ isActive }) => 
     `hover:text-white transition ${isActive ? 'text-white' : 'text-gray-400'}`;
 
   return (
     <footer className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8 font-poppins">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Brand Info - Left Side */}
         <div className="space-y-4">
           <h2 className="text-3xl font-bold">Cartonize</h2>
           <p className="text-gray-400">Premium packaging solutions for modern brands</p>
@@ -30,8 +25,6 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
-        {/* Policies - Right Side */}
         <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
@@ -101,8 +94,6 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
-        {/* Bottom Border */}
         <div className="md:col-span-3 border-t border-gray-800 pt-8 mt-4">
           <p className="text-gray-500 text-sm text-center">
             © {new Date().getFullYear()} Cartonize. All rights reserved.

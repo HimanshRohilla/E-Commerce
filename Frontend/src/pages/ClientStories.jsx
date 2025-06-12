@@ -1,8 +1,6 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import FadeInOnScroll from "../components/FadeInOnScroll";
 
-// Data moved to a separate constant for better organization
 const stories = [
     {
       id: 1,
@@ -114,7 +112,6 @@ const ClientStories = () => {
   return (
     <div className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
         <FadeInOnScroll>
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
@@ -126,8 +123,6 @@ const ClientStories = () => {
           </p>
         </div>
         </FadeInOnScroll>
-
-        {/* Stories Grid */}
         <FadeInOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {stories.map(story => (
@@ -139,8 +134,6 @@ const ClientStories = () => {
           ))}
         </div>
         </FadeInOnScroll>
-
-        {/* CTA Section */}
         <FadeInOnScroll>
         <CTA navigate={navigate} />
         </FadeInOnScroll>

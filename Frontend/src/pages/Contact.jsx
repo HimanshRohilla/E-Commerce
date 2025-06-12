@@ -82,8 +82,7 @@
             
             <div>
               <h2 className="text-2xl font-semibold mb-6">Request a Quote</h2>
-              
-              {/* Status Message */}
+            
               {submitStatus.message && (
                 <div className={`mb-4 p-4 rounded ${
                   submitStatus.success 

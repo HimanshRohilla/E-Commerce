@@ -15,7 +15,6 @@ const TermsOfService = () => {
               You must be at least 18 years old to use our services.
             </p>
           </section>
-          
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Orders and Payments</h2>
             <p>
@@ -23,7 +22,6 @@ const TermsOfService = () => {
               Payment is required at the time of order.
             </p>
           </section>
-          
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Intellectual Property</h2>
             <p>

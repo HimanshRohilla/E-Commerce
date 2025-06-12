@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 
-// Fade-in animation keyframes
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -12,8 +11,6 @@ const fadeIn = keyframes`
     transform: translateY(0);
   }
 `;
-
-// Styled wrapper with conditional animation
 const FadeWrapper = styled.div`
   opacity: 0;
   transform: translateY(20px);
@@ -35,7 +32,7 @@ const FadeInOnScroll = ({ children, delay = "0s" }) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // only trigger once
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }

@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import "./index.css";
 import ReactGA from "react-ga4";
 
-// Pages
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -22,10 +21,8 @@ import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Returns from "./pages/Returns";
 
-// Google Analytics ID
 const GA_MEASUREMENT_ID = "G-K6Z2Y06M4Q"; 
 
-// Initialize Google Analytics once
 ReactGA.initialize(GA_MEASUREMENT_ID);
 
 const pulse = keyframes`
@@ -91,7 +88,6 @@ const SubText = styled.p`
   opacity: 0;
 `;
 
-// Custom hook to track page views on route change
 function usePageTracking() {
   const location = useLocation();
   useEffect(() => {
