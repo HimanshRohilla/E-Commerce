@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Middleware
 app.use(cors({
   origin: 'https://cartonize.vercel.app',
   credentials: true
@@ -15,12 +14,10 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// MongoDB Connection (updated without deprecated options)
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Contact Schema
 const contactSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, match: /.+\@.+\..+/ },
@@ -32,7 +29,6 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema);
 
-// Product Sample Schema
 const productSampleSchema = new mongoose.Schema({
   productId: { type: Number, required: true },
   productName: { type: String, required: true },
@@ -56,7 +52,6 @@ const customizationSchema = new mongoose.Schema({
 
 const Customization = mongoose.model('Customization', customizationSchema);
 
-// Email Transporter Configuration
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -68,7 +63,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Verify email connection
 transporter.verify((error, success) => {
   if (error) {
     console.error('Email server connection error:', error);
@@ -77,7 +71,6 @@ transporter.verify((error, success) => {
   }
 });
 
-// Product Data
 const products = {
   1: { name: 'Recycled Cardboard Box' },
   2: { name: 'Kraft Paper Box' },
@@ -89,7 +82,6 @@ const products = {
   8: { name: 'Embossed Gift Box' }
 };
 
-// Product Samples Endpoint
 app.post('/api/productsamples', async (req, res) => {
   try {
     const { productId, email, shippingAddress } = req.body;
@@ -148,7 +140,6 @@ app.post('/api/productsamples', async (req, res) => {
   }
 });
 
-// Contact Form Endpoint
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, boxType, message } = req.body;
@@ -200,7 +191,6 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Customization Endpoint
 app.post('/api/customizations', async (req, res) => {
   try {
     const { productId, email, customText, colorPreference, additionalNotes } = req.body;
@@ -265,7 +255,6 @@ app.post('/api/customizations', async (req, res) => {
   }
 });
 
-// Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
@@ -273,7 +262,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
